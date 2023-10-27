@@ -4,6 +4,7 @@ package com.kopz.library.controller;
 import com.kopz.library.model.Author;
 import com.kopz.library.model.Book;
 import com.kopz.library.services.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class BookController {
     private BookService service;
 
     @PostMapping
-    public ResponseEntity<Book> createBook(@RequestBody Book book){
+    public ResponseEntity<Book> createBook(@Valid @RequestBody Book book){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createBook(book));
     }
 

@@ -5,6 +5,7 @@ import com.kopz.library.model.Author;
 import com.kopz.library.model.Book;
 import com.kopz.library.services.AuthorService;
 import com.kopz.library.services.BookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class AuthorController {
     private AuthorService service;
 
     @PostMapping
-    public ResponseEntity<Author> createAuthor(@RequestBody Author author){
+    public ResponseEntity<Author> createAuthor(@Valid @RequestBody Author author){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createAuthor(author));
     }
 
